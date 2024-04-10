@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { useBookCustomHook } from '../../ContextAPI/BookContext';
-import { useNavigate } from "react-router-dom";
+
 
 
 const SidePanel = ({details}) => {
     const [selectedGenre,setSelectedGenre] = useState("");
     const [selectedAuthors,setSelectedAuthors] = useState("");
-
-    const navigate = useNavigate()
 
     const {filterByAuthors, filterByGenre, filterByBoth,fetchData} = useBookCustomHook();
 
@@ -49,7 +47,7 @@ const SidePanel = ({details}) => {
                     <label className='font-semibold whitespace-nowrap'>Genre : </label>
                     <select id='genre' className='border rounded-lg p-1 md:p-3 w-full'
                          onChange={handleChange} value={selectedGenre} >
-                        <option >Choose Genre</option>
+                        <option value="" >Choose Genre</option>
                         {details?.map((detail)=>(
                             <option key={detail.id} value={detail.volumeInfo.categories} >{detail.volumeInfo.categories}</option>
                         ))}

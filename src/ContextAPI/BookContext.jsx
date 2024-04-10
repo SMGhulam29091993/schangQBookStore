@@ -33,7 +33,7 @@ const BookProvider = ({children})=>{
     const filterByGenre = (genre)=>{
         const filteredBooks = book.filter(book => book.volumeInfo.categories && book.volumeInfo.categories.includes(genre)); 
         console.log(filteredBooks);
-        setBook(filteredBooks); // Provide setBook with the filteredBooks array, not the filterByGenre function itself
+        setBook(filteredBooks); 
     }
     
     const filterByAuthors = (authors)=>{

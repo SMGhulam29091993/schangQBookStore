@@ -5,7 +5,7 @@ import { useBookCustomHook } from '../../ContextAPI/BookContext';
 const AppLayout = () => (WrappedComponent)=> {
     return (props)=>{
         const {book} = useBookCustomHook();
-        const [details, setDetails] = useState(null);
+        // const [details, setDetails] = useState(null);
      
         // useEffect(()=>{
         //     const fetchBookDetails = async ()=>{
