@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const bookContext = createContext();
@@ -10,14 +10,14 @@ export const useBookCustomHook = ()=>{
 
 const BookProvider = ({children})=>{
 
-
+    const [book, setBook] = useState(null)
 
     const fetchData = async ()=>{
         try {
             const data = await axios.get(`https://d1krvzwx5oquy1.cloudfront.net/books.json`);
             const response = data.data;
             if(response){
-              
+                setBook(response);
                 return response;
             }
             
@@ -25,9 +25,29 @@ const BookProvider = ({children})=>{
             console.log(`Home Data Fetch ${error}`);
         }
     }
-   
 
-    const bookCustomValue = {fetchData}
+    useEffect(()=>{
+        fetchData()
+    },[]);
+    
+    const filterByGenre = (genre)=>{
+        const filteredBooks = book.filter(book => book.volumeInfo.categories && book.volumeInfo.categories.includes(genre)); 
+        console.log(filteredBooks);
+        setBook(filteredBooks); // Provide setBook with the filteredBooks array, not the filterByGenre function itself
+    }
+    
+    const filterByAuthors = (authors)=>{
+        const filteredBooks = book.filter(book => book.volumeInfo.authors.includes(authors));
+        console.log(filteredBooks);
+        setBook(filteredBooks)
+    }
+    const filterByBoth = (authors,genre)=>{
+        const filteredBooks = book.filter(book => book.volumeInfo.authors.includes(authors) && book.volumeInfo.categories && book.volumeInfo.categories.includes(genre));
+        console.log(filteredBooks);
+        setBook(filteredBooks)
+    }
+
+    const bookCustomValue = {fetchData, filterByAuthors, filterByGenre, filterByBoth, book}
 
     return (
         <bookContext.Provider value={bookCustomValue}>
