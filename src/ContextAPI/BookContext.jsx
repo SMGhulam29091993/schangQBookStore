@@ -15,10 +15,9 @@ const BookProvider = ({children})=>{
     const fetchData = async ()=>{
         try {
             const data = await axios.get(`https://d1krvzwx5oquy1.cloudfront.net/books.json`);
-            const responseData = data.data;
-            console.log(responseData);
-            const response = responseData;
+            const response = data.data;
             if(response){
+              
                 return response;
             }
             
@@ -26,6 +25,7 @@ const BookProvider = ({children})=>{
             console.log(`Home Data Fetch ${error}`);
         }
     }
+   
 
     const bookCustomValue = {fetchData}
 

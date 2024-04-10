@@ -22,11 +22,11 @@ const AppLayout = () => (WrappedComponent)=> {
         },[fetchData])
         return (
             <main style={{height:"calc(100vh - 4rem)"}} className='flex flex-col sm:flex-row'>
-                <div className=' border-r-2 border-red-100 w-full h-56 sm:w-80 sm:h-full'>
+                <div className=' border-r-2 border-red-100 w-full h-72 sm:w-80 sm:h-full'>
                     <SidePanel details={details}/>
                 </div>
                 <div className='flex-1'>
-                    <WrappedComponent {...props}/>
+                    <WrappedComponent details={details} {...props}/>
                 </div>
             </main>
         )
