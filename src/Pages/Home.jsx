@@ -1,33 +1,24 @@
-import React, { useEffect } from 'react';
-import axios from "axios";
-import SidePanel from '../Components/Shared/SidePanel';
+import React, { useEffect, useState } from 'react';
+
 import BookList from '../Components/Shared/BookList';
+import { useBookCustomHook } from '../ContextAPI/BookContext';
+import AppLayout from '../Components/Specifics/AppLayout';
 
 
 
 const Home = () => {
-    const fetchData = async ()=>{
-        try {
-            const data = await axios.get(`https://d1krvzwx5oquy1.cloudfront.net/books.json`);
-            const responseData = data;
-            console.log(responseData.data);
-        } catch (error) {
-            console.log(`Home Data Fetch ${error}`);
-        }
-    }
+    const {fetchData} = useBookCustomHook();
+
     useEffect(()=>{
-        fetchData()
-    },[])
+        fetchData();
+        
+    },[]);
+
+
+
   return (
-    <main style={{height:"calc(100vh - 4rem)"}} className='flex flex-col sm:flex-row'>
-        <div style={{height:"100%", width:"25%"}} className=' border-r-2 border-red-100'>
-            <SidePanel/>
-        </div>
-        <div className='flex-1'>
-            <BookList/>
-        </div>
-    </main>
+    <h1>Home</h1>
   )
 }
 
-export default Home;
+export default AppLayout()(Home);

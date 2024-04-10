@@ -17,7 +17,6 @@ const App = () => {
       <Header/>
         <Suspense fallback={<Loader/>}>
           <Routes>
-            
             <Route path='/' element={<Home />} />       
             <Route path='/about' element={<About />} />
             <Route path='/books/:bookID' element={<Books />} />
