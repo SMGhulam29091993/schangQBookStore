@@ -6,7 +6,6 @@ import BookProvider from './ContextAPI/BookContext';
 
 const Home = lazy(()=>import("./Pages/Home"));
 const About = lazy(()=>import("./Pages/About"));
-const Search = lazy(()=>import("./Pages/Search"));
 const Books = lazy(()=>import("./Pages/Books"));
 const PageNotFound = lazy(()=>import("./Pages/PageNotFound"));
 
@@ -20,7 +19,6 @@ const App = () => {
             <Route path='/' element={<Home />} />       
             <Route path='/about' element={<About />} />
             <Route path='/books/:bookID' element={<Books />} />
-            <Route path='/search' element={<Search />} />
             <Route path='*' element={<PageNotFound />} />
             
           </Routes>
