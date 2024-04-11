@@ -25,7 +25,7 @@ const AppLayout = () => (WrappedComponent)=> {
                 <div className=' border-r-2 border-red-100 w-full h-72 sm:w-80 sm:h-full'>
                     <SidePanel details={book}/>
                 </div>
-                <div className='flex-1'>
+                <div className='flex-1 mt-8 sm:mt-1'>
                     <WrappedComponent details={book} {...props}/>
                 </div>
             </main>
