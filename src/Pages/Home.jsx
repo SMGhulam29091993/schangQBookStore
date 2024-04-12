@@ -27,9 +27,9 @@ const Home = ({details}) => {
         <button onClick={()=>setCurrentPage(1)} className='bg-blue-500 text-white p-2 rounded-full'>First Page</button>
         <button onClick={()=>setCurrentPage(currentPage-1)} 
           className={`bg-blue-500 text-white  p-2 rounded-full ${startIndex === 0?'cursor-not-allowed opacity-50' : ''}`}>Prev Page</button>
-        {Array.from({length : totalPages}, (_,i)=>(
-          <button key={i} onClick={()=>setCurrentPage(i+1)} className='bg-blue-500 text-white  p-2 rounded-full'>{i+1}</button>
-        ))}
+        {/* {Array.from({length : totalPages}, (_,i)=>(
+          <button key={i} onClick={()=>setCurrentPage(i+1)} className='bg-blue-500 text-white p-2 rounded-full'>{i+1}</button>
+        ))} */}
         <button onClick={()=>setCurrentPage(currentPage+1)} 
           className={`bg-blue-500 text-white p-2 rounded-full ${endIndex === filterBook.length ? 'cursor-not-allowed opacity-50' : ''}`}>
             Next Page</button>
